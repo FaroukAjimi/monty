@@ -7,7 +7,7 @@
  *
  *
  */
-void (*get_func(char *parts,unsigned int i))(stack_t **stack, unsigned int line_number)
+void (*get_func(char *arg, char *parts,unsigned int i))(stack_t **stack, unsigned int line_number)
 {
 	int n;
 	instruction_t fn[]={
@@ -40,7 +40,8 @@ int stack(char *parts,char *line,FILE *file)
         while(getline(&line, &len, file) != -1)
         {
                 parts = strtok(line, " \n");
-                while(get_func(parts, i) == 0)
+		arg = strtok(NULL, "  \n");
+                while(get_func(arg ,parts, i) == 0)
 		{
 			return (0);
 		}
