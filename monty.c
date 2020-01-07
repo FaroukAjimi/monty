@@ -7,7 +7,7 @@
  *
  *
  */
-void (*get_func(char *arg, char *parts,unsigned int i))(stack_t **stack, unsigned int line_number)
+void (*get_func(stack_t *head,char *parts,unsigned int i))(stack_t **stack, unsigned int line_number)
 {
 	int n;
 	instruction_t fn[]={
@@ -32,18 +32,19 @@ void (*get_func(char *arg, char *parts,unsigned int i))(stack_t **stack, unsigne
  *
  *
  */
-int stack(char *parts,char *line,FILE *file)
+int rdln(char *line,FILE *file)
 {
         unsigned int i = 1;
         size_t len = 0;
-
+	stack_t  *head;
+	char *parts;
         while(getline(&line, &len, file) != -1)
         {
                 parts = strtok(line, " \n");
 		arg = strtok(NULL, "  \n");
-                while(get_func(arg ,parts, i) == 0)
+                while(get_func(head,parts, i) == 0)
 		{
-			return (0);
+			exit(EXIT_FAILURE);
 		}
 		i++;
 	}
@@ -59,7 +60,8 @@ void main(int argc,char *argv[])
 {
 	FILE * file;
 	char *line = NULL;
-	char *parts;
+	stack_t *head = NULL;
+
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
@@ -67,15 +69,15 @@ void main(int argc,char *argv[])
 	}
 	if (argc == 2)
 	{
-		if (stack(parts,line,file) == 0)
-			exit(EXIT_FAILURE);
 		file = fopen(argv[1], "r");
 		if (file == NULL)
 		{
 			printf("Error: Can't open file %s\n",argv[1]);
 			exit(EXIT_FAILURE);
 		}
-		stack(parts,line,file);
+		if (rdln(line,file) == 0)
+                        exit(EXIT_FAILURE);
+		rdln(line,file);
 	}
 	fclose(file);
 }

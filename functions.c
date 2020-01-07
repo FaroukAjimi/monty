@@ -8,34 +8,35 @@
  *
  *
  */
-stack_t* newnode()
+stack_t* newnode(stack_t head, char* arg)
 {
 	stack_t *stack = (stack_t *)malloc(sizeof(stack_t));
 	int n = atoi(arg);
-	stack->n = n;
-	stack->next = NULL;
-	stack->prev = NULL;
+	head->n = n;
+	head->next = NULL;
+	head->prev = NULL;
 }
 /**
  *
  *
  *
  */
-void _push(stack_t **stack, unsigned int line_number)
+void _push(stack_t *head, unsigned int line_number)
 {
-	stack_t* s = newnode(arg);
-	s->next = *stack;
-	*stack = s;
+	stack_t* s = newnode(*head,arg);
+	s->next = head;
+	head = s;
 }
 /**
  *
  *
  */
-void _pall(stack_t **stack, unsigned int line_number)
+void _pall(stack_t *head, unsigned int line_number)
 {
-	stack_t *header = *stack;
-	void(line_number);
-	if  (*stack == NULL)
+	stack_t *header = head;
+	(void)line_number;
+
+	if  (head == NULL)
 		return;
 	while (header != NULL)
 	{
