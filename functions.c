@@ -28,3 +28,13 @@ void _pall(stack_t **head, unsigned int line_number)
 		header = header->next;
 	}
 }
+/**
+ *nop - nothing
+ *@head: head of stack
+ *@line_number: the line pf the number
+ */
+void nop(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+}

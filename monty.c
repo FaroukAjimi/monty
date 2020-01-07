@@ -16,6 +16,7 @@ void (*g(stack_t **h, char *p, unsigned int i))(stack_t **h, unsigned int l)
 	instruction_t fn[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 for (n = 0; fn[n].opcode ; n++)

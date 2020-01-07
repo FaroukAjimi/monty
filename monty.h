@@ -31,4 +31,5 @@ typedef struct instruction_s
 } instruction_t;
 void _push(stack_t **head, unsigned int line_number);
 void _pall(stack_t **head, unsigned int line_number);
+void nop(stack_t **head, unsigned int line_number);
 #endif
