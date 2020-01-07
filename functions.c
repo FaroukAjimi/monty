@@ -3,33 +3,27 @@
 #include <string.h>
 #include "monty.h"
 /**
- *
- *
- *
- *
- */
-stack_t* newnode(stack_t **head, char* arg)
-{
-	stack_t *stack = (stack_t *)malloc(sizeof(stack_t));
-	int n = atoi(arg);
-	(*head)->n = n;
-	(*head)->next = NULL;
-	(*head)->prev = NULL;
-}
-/**
- *
- *
- *
+ *_push - push elements in our linked list
+ *@head: head of list
+ *@line_number: the number of the line
  */
 void _push(stack_t **head, unsigned int line_number)
 {
-        printf("po");
+
 }
 /**
- *
- *
+ *_pall - display stack elements
+ *@head: head of stack
+ *@line_number: the number of the line
  */
 void _pall(stack_t **head, unsigned int line_number)
 {
-	printf("sds");
+	stack_t *header = *head;
+	(void)line_number;
+
+	while (header)
+	{
+		printf("%d\n", header->n);
+		header = header->next;
+	}
 }
