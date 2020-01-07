@@ -7,7 +7,7 @@
  *
  *
  */
-void (*get_func(stack_t *head,char *parts,unsigned int i))(stack_t **stack, unsigned int line_number)
+void (*get_func(stack_t **head,char *parts,unsigned int i))(stack_t **stack, unsigned int line_number)
 {
 	int n;
 	instruction_t fn[]={
@@ -17,9 +17,8 @@ void (*get_func(stack_t *head,char *parts,unsigned int i))(stack_t **stack, unsi
 	};
 	for (n = 0; fn[n].opcode ; n++)
 	{
-		if (strncmp(parts,fn[n].opcode,strlen(fn[n].opcode)) == 0)
+		if (strncmp(parts,fn[n].opcode,strlen(fn[n].opcode)) == 0 && (parts[strlen(fn[n].opcode)] == '\0'))
 		{
-			printf("%s\n",fn[n].opcode);
 			return(fn[n].f);
 		}
 	}
@@ -36,16 +35,17 @@ int rdln(char *line,FILE *file)
 {
         unsigned int i = 1;
         size_t len = 0;
-	stack_t  *head;
+	stack_t  *head = NULL;
 	char *parts;
         while(getline(&line, &len, file) != -1)
         {
                 parts = strtok(line, " \n");
 		arg = strtok(NULL, "  \n");
-                while(get_func(head,parts, i) == 0)
+                while(get_func(&head,parts, i) == 0)
 		{
-			exit(EXIT_FAILURE);
+			return(0);
 		}
+		
 		i++;
 	}
 	return (1);
