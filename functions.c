@@ -9,7 +9,8 @@
  */
 void _push(stack_t **head, unsigned int line_number)
 {
-
+	(void)head;
+	(void)line_number;
 }
 /**
  *_pall - display stack elements
