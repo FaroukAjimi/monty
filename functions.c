@@ -34,6 +34,7 @@ void _push(stack_t **stack, unsigned int line_number)
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *header = *stack;
+	void(line_number);
 	if  (*stack == NULL)
 		return;
 	while (header != NULL)
