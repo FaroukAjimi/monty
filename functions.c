@@ -9,22 +9,21 @@
  */
 void _push(stack_t **head, unsigned int line_number)
 {
-        stack_t *new = *head;
+        stack_t *new = NULL;
 	new = (stack_t *)malloc(sizeof(stack_t));
+	new->n = atoi(arg);
 	(void)line_number;
 	if (!head)
 	{
-		(*head)->n = atoi(arg);
-		(*head)->next = NULL;
-		(*head)->prev = NULL;
+		new->next = NULL;
+		new->prev = NULL;
 	}
 	else
 	{
-		new->n = atoi (arg);
-		new->prev = (*head);
-		new->next = NULL;
-		(*head) = new;
+		new->prev = NULL;
+		new->next = (*head);
 	}
+	(*head) = new;
 }
 /**
  *_pall - display stack elements
