@@ -9,7 +9,8 @@
  */
 void _push(stack_t **head, unsigned int line_number)
 {
-        stack_t *new = NULL;
+	stack_t *new = NULL;
+
 	new = (stack_t *)malloc(sizeof(stack_t));
 	new->n = atoi(arg);
 	(void)line_number;

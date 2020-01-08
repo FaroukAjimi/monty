@@ -60,6 +60,7 @@ void rdln(char *line, FILE *file)
  *main - monty language interpreter
  *@argc: number of argument
  *@argv: arguments carrier
+ *Return: 0 always
  */
 int main(int argc, char *argv[])
 {
